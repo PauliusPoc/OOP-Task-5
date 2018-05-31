@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.9)
+project(OOP_Task_5)
+
+set(CMAKE_CXX_STANDARD 11)
+
+option(Test "Do tests" OFF)
+if (Test)
+add_subdirectory(tests/googletest-master)
+include_directories(tests/googletest-master/googletest/include)
+include_directories(tests/googletest-master/googlemock/include)
+add_executable(OOP_Task_5 mainTest.cpp)
+target_link_libraries(OOP_Task_5 gtest gtest_main)
+else()
+    add_executable(OOP_Task_5 main.cpp)
+endif(Test)
+unset(Test CACHE)
